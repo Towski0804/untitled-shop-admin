@@ -1,12 +1,13 @@
 import { useState } from "react";
 import upload_area from "../../assets/upload_area.svg";
 import "./AddProduct.scss";
+import { ajax } from "../lib/ajax";
 
 interface ProductDetails {
   name: string;
   image: string;
-  old_price: number;
-  new_price: number;
+  old_price: number | "";
+  new_price: number | "";
   category: string;
 }
 
@@ -15,8 +16,8 @@ const AddProduct = () => {
   const [productDetails, setProductDetails] = useState<ProductDetails>({
     name: "",
     image: "",
-    old_price: 0,
-    new_price: 0,
+    old_price: "",
+    new_price: "",
     category: "women",
   });
   const imageHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,26 +34,48 @@ const AddProduct = () => {
       [e.target.name]: e.target.value,
     });
   };
-  const addProduct = async () => {
-    let responseData: { success: boolean; imageURL: string };
-    const product = productDetails;
 
+  const validate = (product: ProductDetails) => {
+    const message = [];
+    if (product.name === "") {
+      message.push("Product Name is required");
+    }
+    if (!image) {
+      message.push("Product Image is required");
+    }
+    if (product.old_price === "") {
+      message.push("Product Price is required");
+    }
+    if (product.new_price === "") {
+      message.push("Product Offer Price is required");
+    }
+    if (message.length > 0) {
+      alert(message.join("\n"));
+      return false;
+    }
+    return true;
+  };
+
+  const addProduct = async () => {
+    if (!validate(productDetails)) {
+      return;
+    }
+    const product = productDetails;
     const formData = new FormData();
     formData.append("product", image as File);
-
-    await fetch("http://localhost:4000/upload", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-      },
-      body: formData,
-    })
-      .then((res) => res.json)
-      .then((data) => (responseData = data));
-    if (responseData) {
-      product.image = responseData.imageURL;
-      console.log(product);
-    }
+    await ajax
+      .post("/upload", formData)
+      .then((res) => {
+        if (res.data.success) {
+          product.image = res.data.image_url;
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    await ajax.post("/product", product).then((res) => {
+      res.data.success ? alert("Product Added") : alert("Failed to add");
+    });
   };
   return (
     <div
