@@ -1,0 +1,6 @@
+.itemfield {
+  @apply w-full;
+  > input {
+    @apply w-full h-[50px] rounded pl-4 border border-slate-300 outline-none text-sm;
+  }
+}
