@@ -15,12 +15,23 @@ const ListProduct = () => {
     await ajax.delete(`/product/${id}`);
     await fetchInfo();
   };
+  const currentAmount = allProduct.length;
+  const totalAmount = allProduct.length;
   return (
     <div
-      className="list-product flex flex-col items-center w-full h-[740px] p-[10px_50px] m-8 rounded-md bg-white space-y-8 
+      className="list-product flex flex-col items-center w-full h-[740px] p-[10px_50px] m-8 rounded-md bg-white 
     max-md:w-[95%] max-md:h-full max-md:p-[10px_30px] max-md:m-[20px_auto]"
     >
-      <h1 className="text-3xl font-semibold">All Products List</h1>
+      <h1 className="text-3xl font-semibold flex-row text-center">
+        All Products List{" "}
+        <p className="text-base font-normal [&>span]:font-semibold">
+          Showing{" "}
+          <span>
+            {currentAmount} of <span>{totalAmount} </span>
+          </span>
+          products
+        </p>
+      </h1>
       <div className="format-main">
         <p>Products</p>
         <p>Title</p>
