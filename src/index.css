@@ -9,7 +9,6 @@
 }
 
 body {
-  margin: 0;
   @apply text-zinc-800;
   font-family: poppins;
 }
