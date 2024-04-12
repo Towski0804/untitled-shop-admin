@@ -45,9 +45,13 @@ const AddProduct = () => {
     }
     if (product.old_price === "") {
       message.push("Product Price is required");
+    } else if (isNaN(Number(product.old_price))) {
+      message.push("Price must be a number");
     }
     if (product.new_price === "") {
       message.push("Product Offer Price is required");
+    } else if (isNaN(Number(product.new_price))) {
+      message.push("Offer Price must be a number");
     }
     if (message.length > 0) {
       alert(message.join("\n"));
