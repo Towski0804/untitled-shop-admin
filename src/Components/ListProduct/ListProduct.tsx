@@ -11,7 +11,7 @@ const ListProduct = () => {
   useEffect(() => {
     fetchInfo();
   }, []);
-  const removeItem = async (id: number) => {
+  const removeItem = async (id: string) => {
     await ajax.delete(`/product/${id}`);
     await fetchInfo();
   };
@@ -60,7 +60,7 @@ const ListProduct = () => {
                   src={cross_icon}
                   alt=""
                   className="remove-icon cursor-pointer m-auto"
-                  onClick={() => removeItem(product.id)}
+                  onClick={() => removeItem(product._id)}
                 />
               </div>
               <hr />
