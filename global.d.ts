@@ -1,10 +1,10 @@
 type Product = {
-  id: number;
+  _id: string;
   name: string;
   category: string;
   old_price: number;
   new_price: number;
   image: string;
-  available: boolean;
+  available?: boolean;
   date?: Date;
 };
