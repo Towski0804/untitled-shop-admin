@@ -148,7 +148,7 @@ const AddProduct = () => {
         </label>
       </div>
       <button
-        className="add-product-btn mt-5 w-[160px] h-[50px] rounded-md bg-blue-500 border-none cursor-pointer text-white font-medium"
+        className="add-product-btn mt-5 w-[160px] h-[50px] rounded-md bg-blue-500 border-none cursor-pointer text-white font-medium hover:bg-blue-300 transition-all duration-[250ms] ease-in-out"
         onClick={addProduct}
       >
         ADD

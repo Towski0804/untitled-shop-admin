@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ajax } from "../lib/ajax";
-import cross_icon from "../../assets/cross_icon.png";
+import cross_icon from "../../assets/cross_icon.svg";
 import "./ListProduct.scss";
 
 const ListProduct = () => {
@@ -59,7 +59,7 @@ const ListProduct = () => {
                 <img
                   src={cross_icon}
                   alt=""
-                  className="remove-icon cursor-pointer m-auto"
+                  className="remove-icon cursor-pointer m-auto w-4"
                   onClick={() => removeItem(product._id)}
                 />
               </div>

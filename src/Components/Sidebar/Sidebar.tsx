@@ -12,13 +12,13 @@ const Sidebar = () => {
     >
       <Link to={"/addproduct"} className="">
         <div className="sidebar-item">
-          <img src={add_product_icon} alt="" />
+          <img src={add_product_icon} alt="" className="w-8" />
           <p>Add Product</p>
         </div>
       </Link>
       <Link to={"/listproduct"} className="">
         <div className="sidebar-item">
-          <img src={list_product_icon} alt="" />
+          <img src={list_product_icon} alt="" className="w-8" />
           <p>Product List</p>
         </div>
       </Link>
