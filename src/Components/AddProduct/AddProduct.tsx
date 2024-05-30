@@ -9,6 +9,7 @@ interface ProductDetails {
   old_price: number | "";
   new_price: number | "";
   category: string;
+  description: string;
 }
 
 const AddProduct = () => {
@@ -19,6 +20,7 @@ const AddProduct = () => {
     old_price: "",
     new_price: "",
     category: "women",
+    description: "",
   });
   const imageHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) {
@@ -27,7 +29,9 @@ const AddProduct = () => {
     setImage(e.target.files[0]);
   };
   const changeHandler = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => {
     setProductDetails({
       ...productDetails,
@@ -118,6 +122,17 @@ const AddProduct = () => {
           />
         </div>
       </div>
+
+      <div>
+        <p>Product Description</p>
+        <textarea
+          value={productDetails.description}
+          onChange={changeHandler}
+          name="description"
+          placeholder="Product Description"
+          className="w-full h-[100px] rounded p-4 border border-slate-300 outline-none text-sm align-top"
+        />
+      </div>
       <div className="itemfield">
         <p>Product Category</p>
         <select
@@ -132,7 +147,7 @@ const AddProduct = () => {
         </select>
       </div>
       <div className="itemfield">
-        <label htmlFor="file-input">
+        <label htmlFor="file-input" className="inline-block">
           <img
             src={image ? URL.createObjectURL(image) : upload_area}
             alt=""

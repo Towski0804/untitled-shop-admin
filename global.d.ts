@@ -1,10 +1,13 @@
+declare let isDev: boolean;
+
 type Product = {
   _id: string;
   name: string;
   category: string;
-  old_price: number;
-  new_price: number;
   image: string;
+  new_price: number;
+  old_price: number;
+  description: string;
   available?: boolean;
   date?: Date;
 };

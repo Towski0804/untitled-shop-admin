@@ -19,7 +19,7 @@ const ListProduct = () => {
   const totalAmount = allProduct.length;
   return (
     <div
-      className="list-product flex flex-col items-center w-full h-[740px] p-[10px_50px] m-8 rounded-md bg-white 
+      className="list-product flex flex-col items-center w-full p-[10px_50px] m-8 rounded-md bg-white 
     max-md:w-[95%] max-md:h-full max-md:p-[10px_30px] max-md:m-[20px_auto]"
     >
       <h1 className="text-3xl font-semibold flex-row text-center">
