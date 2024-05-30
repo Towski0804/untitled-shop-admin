@@ -1,0 +1,30 @@
+/* styles.css */
+@keyframes dropdown {
+  0% {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes closeup {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+}
+
+.dropdown-enter {
+  animation: dropdown 0.25s ease-out forwards;
+}
+
+.dropdown-exit {
+  animation: closeup 0.25s ease-out forwards;
+}

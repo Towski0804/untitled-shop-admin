@@ -1,4 +1,4 @@
 .sidebar-item {
-  @apply flex items-center justify-center mx-5 p-[5px_10px] rounded-md bg-slate-100 gap-5
+  @apply flex items-center justify-center mx-5 p-[5px_10px] rounded-md gap-5 border hover:bg-slate-100 hover:border-transparent
   max-md:m-0;
 }
