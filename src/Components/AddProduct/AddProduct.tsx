@@ -17,8 +17,8 @@ const AddProduct = () => {
   const [productDetails, setProductDetails] = useState<ProductDetails>({
     name: "",
     image: "",
-    old_price: "",
-    new_price: "",
+    old_price: 0,
+    new_price: 0,
     category: "women",
     description: "",
   });
@@ -81,9 +81,17 @@ const AddProduct = () => {
       .catch((err) => {
         console.log(err);
       });
-    await ajax.post("/product", product).then((res) => {
-      res.data.success ? alert("Product Added") : alert("Failed to add");
-    });
+    product.new_price = Number(product.new_price);
+    product.old_price = Number(product.old_price);
+    await ajax
+      .post("/product", product)
+      .then((res) => {
+        alert("Product Added");
+        window.location.reload();
+      })
+      .catch((err) => {
+        alert(err.response.data.error);
+      });
   };
   return (
     <div
